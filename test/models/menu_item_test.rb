@@ -48,13 +48,14 @@ class MenuItemTest < ActiveSupport::TestCase
     bad.each do |name|
       assert new_menu_item(name).invalid?, "#{name} shouln't be valid"
     end
+  end
 
 
 
     test "menu item is not valid without a unique title" do
       menu_item = MenuItem.new(title: menu_items(:soda).title, description: "Menu item description", price: 1, image_url: "image.jpg")
-      assert product.invalid?
-      assert_equal ["title has already been taken"], product.errors[:title]
+      assert menu_item.invalid?
+      assert_equal ["title has already been taken"], menu_item.errors[:title]
     end
 
 end

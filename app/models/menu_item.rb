@@ -7,4 +7,9 @@ class MenuItem < ActiveRecord::Base
     with:    %r{\.(gif|jpg|png)\Z}i,
     message: 'Must be a URL for a GIF, JPG, or PNG image'
   }
+  
+  def self.latest
+    MenuItem.order(:updated_at).last
+  end
+  
  end

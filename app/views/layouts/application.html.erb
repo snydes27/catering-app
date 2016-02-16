@@ -1,19 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 
-  <body>
+<body>
+  <div class="top-bar">
+    <div class="row">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text">700 South Deli and Catering</li>
+          <li class="has-submenu">
+            <a href="#">One</a>
+            <ul class="submenu menu vertical" data-submenu>
+              <li><a href="#">One</a></li>
+              <li><a href="#">Two</a></li>
+              <li><a href="#">Three</a></li>
+            </ul>
+          </li>
+          <li><a href="#">Two</a></li>
+          <li><a href="#">Three</a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+          <li><input type="search" placeholder="Search"></li>
+          <li><button type="button" class="button">Search</button></li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
+  <br>
+
+  <div class="row columns">
+    <nav aria-label="You are here:" role="navigation">
+      <ul class="breadcrumbs">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Features</a></li>
+        <li class="disabled">Gene Splicing</li>
+        <li>
+          <span class="show-for-sr">Current: </span> Cloning
+        </li>
+      </ul>
+    </nav>
+  </div>
     <%= yield %>
-
-  </body>
+</body>
 </html>
+

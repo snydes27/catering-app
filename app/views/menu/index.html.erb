@@ -1,0 +1,20 @@
+<% if notice %>
+<p class="alert-box"><%= notice %></p>
+<% end %>
+
+<h1>Catering Menu</h1>
+
+<% cache ['menu', MenuItem.latest] do %>
+  <% @menu_items.each do |menu_item| %>
+    <% cache ['entry', menu_item] do %>
+        <div>
+          <%= image_tag(menu_item.image_url) %>
+          <h3><%= menu_item.title %></h3>
+          <%= sanitize(menu_item.description) %>
+          <div>
+            <span><%= number_to_currency(menu_item.price) %></span>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
+<% end %>
