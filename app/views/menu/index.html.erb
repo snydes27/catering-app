@@ -4,17 +4,46 @@
 
 <h1>Catering Menu</h1>
 
-<% cache ['menu', MenuItem.latest] do %>
-  <% @menu_items.each do |menu_item| %>
-    <% cache ['entry', menu_item] do %>
-        <div>
+<div class="large-8 columns">
+  <div class="row">
+    <% @menu_items.each do |menu_item| %>
+      <div class="large-4 small-6 columns">
+        <div class="panel">
           <%= image_tag(menu_item.image_url) %>
           <h3><%= menu_item.title %></h3>
           <%= sanitize(menu_item.description) %>
-          <div>
-            <span><%= number_to_currency(menu_item.price) %></span>
+          <div class="subheader">
+              <%= number_to_currency(menu_item.price) %>
+              <span><%= button_to 'Add to Order', line_items_path(menu_item_id: menu_item) %></span>
           </div>
         </div>
+      </div>
     <% end %>
-  <% end %>
-<% end %>
+  </div>
+<div>
+
+
+<!-- Footer -->
+
+      <footer class="row">
+        <div class="large-12 columns"><hr />
+          <div class="row">
+
+            <div class="large-6 columns">
+              <p>&copy; Copyright no one at all. Go to town.</p>
+            </div>
+
+            <div class="large-6 columns">
+              <ul class="inline-list right">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+
+    <!-- End Footer -->
