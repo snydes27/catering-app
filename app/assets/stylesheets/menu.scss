@@ -3,5 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .img {
-  width: 200px;
+  float: left;
+  width: 150px;
+  clear: left;
+}
+
+.item {
+  float: left;
 }
