@@ -1,21 +1,30 @@
-<% if notice %>
-<p class="alert-box"><%= notice %></p>
-<% end %>
+<h1>Catering Menu</h1>
 
+<div>
+  <ul class="menu">
+    <li><input type="search" placeholder="Search"></li>
+    <li><button type="button" class="button">Search</button></li>
+  </ul>
+</div><br/>
 
-  <h1>Catering Menu</h1>
-  <div>
-    <% @menu_items.each do |menu_item| %>
-      <div>
-        <div class="panel">
-          <div class="img"><%= image_tag(menu_item.image_url) %></div>
-            <div class="item">
-              <h5><%= menu_item.title %></h5>
-              <%= sanitize(menu_item.description) %>
-              <%= number_to_currency(menu_item.price) %>
-              <%= button_to 'Add to Order', line_items_path(menu_item_id: menu_item) %>
-            </div>
-        </div>
-      </div>
-    <% end %>
+<div class="row">
+  <% @menu_items.each do |menu_item| %>
+  <div class="small-1 columns img">
+    <%= image_tag(menu_item.image_url) %>
   </div>
+  <div class="small-5 columns">
+    <h5><%= menu_item.title %> - <%= number_to_currency(menu_item.price) %></h5>
+    <%= sanitize(menu_item.description) %>
+  </div>
+  <div class="small-4 columns">
+    <%= text_field_tag 'quantity', "", class: 'qty-field' %>
+    <%= button_to 'Add to Order', line_items_path(menu_item_id: menu_item) %>
+  </div>
+  <% end %>
+</div>
+
+
+
+
+
+

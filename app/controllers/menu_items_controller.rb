@@ -15,10 +15,12 @@ class MenuItemsController < ApplicationController
   # GET /menu_items/new
   def new
     @menu_item = MenuItem.new
+    @categories = Category.order(:name)
   end
 
   # GET /menu_items/1/edit
   def edit
+    @categories = Category.order(:name)
   end
 
   # POST /menu_items
@@ -39,7 +41,7 @@ class MenuItemsController < ApplicationController
 
   # PATCH/PUT /menu_items/1
   # PATCH/PUT /menu_items/1.json
-  def update
+  def update    
     respond_to do |format|
       if @menu_item.update(menu_item_params)
         format.html { redirect_to @menu_item, notice: 'Menu item was successfully updated.' }
@@ -58,6 +60,16 @@ class MenuItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to menu_items_url, notice: 'Menu item was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def who_bought
+    @menu_item = MenuItem.find(params[:id])
+    @latest_order = @menu_item.orders.order(:updated_at).last
+    if stale?(@latest_order)
+      respond_to do |format|
+        format.atom
+      end
     end
   end
 

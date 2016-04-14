@@ -1,0 +1,89 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="large-6 columns">
+  <h4>Customer Information</h4>
+  <fieldset class="fieldset">
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :delivery_address %><br>
+      <%= f.text_area :delivery_address, rows: 3, cols: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :phone %><br>
+      <%= f.number_field :phone %>
+    </div>
+  </fieldset>
+</div>
+<div class="large-6 columns">
+  <h4>Billing Information</h4>
+  <fieldset class="fieldset">    
+    <div class="field">
+      <%= f.label :billing_name %><br>
+      <%= f.text_field :billing_name, size: 40 %>
+    </div>
+    <div class="field">
+      <%= f.label :billing_address %><br>
+      <%= f.text_area :billing_address, rows: 3, cols: 40 %>
+    </div>
+  </fieldset>
+</div>
+
+  <div class="field">
+    <%= f.label :payment_type %><br>
+    <%= f.select :payment_type, Order::PAYMENT_TYPES, prompt: 'Select a payment method'%>
+  </div>
+
+  <div class="field">
+    <%= f.label :delivery_date %><br>
+    <%= f.date_select :delivery_date %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_time %><br>
+    <%= f.time_select :delivery_time %>
+  </div>
+  <div class="field">
+    <%= f.label :total_people %><br>
+    <%= f.number_field :total_people, size: 6, maxlength: 3 %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_notes %><br>
+    <%= f.text_area :delivery_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_fee %><br>
+    <%= f.text_field :delivery_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_code %><br>
+    <%= f.text_field :discount_code %>
+  </div>
+  <div class="field">
+    <%= f.label :fuel_fee %><br>
+    <%= f.text_field :fuel_fee %>
+  </div>
+  <div class="field">
+    <%= f.label :discount %><br>
+    <%= f.text_field :discount %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Place Order'%>
+  </div>
+<% end %>

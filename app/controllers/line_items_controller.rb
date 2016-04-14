@@ -25,10 +25,11 @@ class LineItemsController < ApplicationController
 
   # POST /line_items
   # POST /line_items.json
-  
+
   def create
     menu_item = MenuItem.find(params[:menu_item_id])
-    @line_item = @cart.add_menu_item(menu_item.id)
+    @line_item = @cart.add_menu_item(menu_item.id) # @cart is actually Cart Model
+    quantity = params[:quantity]
 
     respond_to do |format|
       if @line_item.save
@@ -44,6 +45,8 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
+    @line_item = LineItem.find(params[:id])
+    @line_item.quantity = params[:item][:quantity]
     respond_to do |format|
       if @line_item.update(line_item_params)
         format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
@@ -60,10 +63,11 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to store_url, notice: 'Line item was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -74,5 +78,9 @@ class LineItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
       params.require(:line_item).permit(:menu_item_id)
+    end
+
+    def line_items_params
+      params.require(:line_item).permit(:quantity)
     end
 end

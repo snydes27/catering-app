@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <strong>Billing name:</strong>
+  <%= @order.billing_name %>
+</p>
+
+<p>
+  <strong>Delivery address:</strong>
+  <%= @order.delivery_address %>
+</p>
+
+<p>
+  <strong>Billing address:</strong>
+  <%= @order.billing_address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @order.email %>
+</p>
+
+<p>
+  <strong>Payment type:</strong>
+  <%= @order.payment_type %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @order.phone %>
+</p>
+
+<p>
+  <strong>Delivery date:</strong>
+  <%= @order.delivery_date %>
+</p>
+
+<p>
+  <strong>Delivery time:</strong>
+  <%= @order.delivery_time %>
+</p>
+
+<p>
+  <strong>Total people:</strong>
+  <%= @order.total_people %>
+</p>
+
+<p>
+  <strong>Delivery notes:</strong>
+  <%= @order.delivery_notes %>
+</p>
+
+<p>
+  <strong>Delivery fee:</strong>
+  <%= @order.delivery_fee %>
+</p>
+
+<p>
+  <strong>Discount code:</strong>
+  <%= @order.discount_code %>
+</p>
+
+<p>
+  <strong>Fuel fee:</strong>
+  <%= @order.fuel_fee %>
+</p>
+
+<p>
+  <strong>Discount:</strong>
+  <%= @order.discount %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

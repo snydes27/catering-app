@@ -1,0 +1,16 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>700 South Online Ordering App</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<header class="row">
+  <div class="large-6 column">
+    <%= image_tag("700-south-logo-banner.png", alt: "700 South Logo", id: "logo") %>
+  </div>
+  <div id="header-right" class="large-6 column">
+    <%= button_to 'Start New Order', new_order_path, method: :get, class: "button centered" %>
+  </div>
+</header>

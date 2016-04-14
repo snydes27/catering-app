@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .img {
+  padding: 0px 10px 0px 10px;
   float: left;
   width: 150px;
   clear: left;
@@ -10,4 +11,8 @@
 
 .item {
   float: left;
+}
+
+.menu_item {
+  padding: 0px 0px 0px 0px;
 }

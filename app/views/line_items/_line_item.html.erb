@@ -1,5 +1,27 @@
-<tr>
-  <td><%= line_item.quantity %>&times;</td>
-  <td><%= line_item.menu_item.title %></td>
-  <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
-</tr>
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Product Name</th>
+    <th>Size</th>
+    <th>Price</th>
+  </tr>
+<% @cart.line_items.each do |item| %>
+  <tr>
+    <td>
+      <%= form_for :item, :url => line_items_update_path(id: item.id) do |f| %>
+        <div class="field">
+          <%= f.number_field :quantity, value: item.quantity, class: 'qty-field' %>
+          <%= submit_tag "Update" %>
+        </div>
+      <% end %>
+    </td>
+    <td><%= line_item.menu_item.title %></td>
+      <td class="item_price"><%= number_to_currency(line_item.total_price) %></td>
+      <td><%= button_to 'x', line_item, method: :delete, data: { confirm: 'Are you sure?'} %></td>
+    </tr>
+<% end %>
+    <tr>
+        <td colspan="3">Total Price</td>
+        <td><%= number_to_currency(@cart.total_price) %></td>
+    </tr>
+</table>

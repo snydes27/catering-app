@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: Joe Tester
+  billing_name: MyString
+  delivery_address: MyText
+  billing_address: MyText
+  email: test@example.org
+  payment_type: Check
+  phone: 1
+  delivery_date: 2016-02-25
+  delivery_time: 2016-02-25 20:29:42
+  total_people: 1
+  delivery_notes: MyText
+  delivery_fee: 9.99
+  discount_code: MyString
+  fuel_fee: 9.99
+  discount: 9.99
+
+two:
+  name: MyString
+  billing_name: MyString
+  delivery_address: MyText
+  billing_address: MyText
+  email: MyString
+  payment_type: MyString
+  phone: 1
+  delivery_date: 2016-02-25
+  delivery_time: 2016-02-25 20:29:42
+  total_people: 1
+  delivery_notes: MyText
+  delivery_fee: 9.99
+  discount_code: MyString
+  fuel_fee: 9.99
+  discount: 9.99
